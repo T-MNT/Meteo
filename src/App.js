@@ -239,28 +239,33 @@ function App() {
 
       return favList.map((fav, index) => (
         <li
-          className="grid grid-cols-[90%,1fr] items-center text-white text-xl w-full    mb-1  "
+          className={`${
+            cityName.length > 0 ? 'grid grid-cols-[90%,1fr]' : ''
+          }  items-center text-white text-xl w-full mb-1`}
           key={index}
         >
           <p
-            className="mr-8 w-[85%] bg-black bg-opacity-10 pl-2 py-1 cursor-pointer rounded hover:w-[95%]"
+            className={` ${
+              cityName.length > 0 ? 'mr-8 w-[85%] hover:w-[95%]' : 'w-full'
+            } bg-black bg-opacity-10 pl-2 py-1 cursor-pointer rounded `}
             onClick={(e) => getWeatherDataFromFav(fav, e)}
           >
             {fav}
           </p>
-
-          <span>
-            <FontAwesomeIcon
-              icon={faCircleXmark}
-              onClick={() => deleteFav(fav)}
-              className="cursor-pointer -"
-            />
-          </span>
+          {cityName.length > 0 ? (
+            <span>
+              <FontAwesomeIcon
+                icon={faCircleXmark}
+                onClick={() => deleteFav(fav)}
+                className="cursor-pointer -"
+              />
+            </span>
+          ) : null}
         </li>
       ));
     } else {
       return (
-        <p className="text-xl text-center  text-white font-bold tracking-wide my-auto">
+        <p className="text-xl  text-white font-bold tracking-wide ">
           Vous n'avez pas de favori pour le moment
         </p>
       );
@@ -313,12 +318,12 @@ function App() {
       <div className="   grid grid-cols-[350px,1fr] py-4   rounded-xl backdrop-blur-2xl">
         <div
           className={`${
-            cityName.length > 0 ? 'border-r-2' : null
+            cityName.length > 0 ? 'border-r-2 ' : null
           }  border-white px-4 h-full`}
         >
           <div
             className={`${
-              cityName.length > 0 ? 'border-b-2' : null
+              cityName.length > 0 ? 'border-b-2 ' : 'text-center'
             }  pb-4  h-[40%]`}
           >
             <h4 className="text-3xl text-white font-bold tracking-wide mb-4">
@@ -326,9 +331,13 @@ function App() {
             </h4>
             <form
               onSubmit={(e) => getWeatherData(e)}
-              className="w-full flex items-center"
+              className="w-full flex justify-center items-center"
             >
-              <div className="flex items-center pb-2 border-b-[1px] mr-8 ">
+              <div
+                className={`flex items-center pb-2 border-b-[1px] ${
+                  cityName.length > 0 ? 'mr-8' : ''
+                }  `}
+              >
                 <input
                   type="text"
                   className="bg-transparent w-[95%] text-xl  outline-none text-white"
@@ -354,7 +363,7 @@ function App() {
             <h4 className="text-3xl text-white font-bold tracking-wide mt-8 mb-4">
               Favoris ( {favData.length} / 3 )
             </h4>
-            <ul className="h-[130px] flex flex-col items-center">
+            <ul className="h-[130px] flex flex-col justify-center items-center">
               {favDisplayer()}
             </ul>
           </div>
