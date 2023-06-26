@@ -154,7 +154,7 @@ function App() {
           )
           .then((res) => setWeatherData(res.data.forecast));
       } catch (error) {
-        alert('erreur');
+        alert("Une erreur est survenue, veuillez renseigner un nom de ville correct si ce n'est pas le cas");
       }
     }
   };
