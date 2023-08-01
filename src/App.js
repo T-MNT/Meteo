@@ -297,7 +297,7 @@ function App() {
       }
       statsArray = [
         { name: 'Temperature moyenne', value: Math.round(temperature) + '°C' },
-        { name: 'Jours de pluie', value: rainDay.length + ' / 13' },
+        { name: 'Jours de pluie', value: rainDay.length + ' / 14' },
         { name: 'Vent moyen', value: Math.round(wind) + ' km/h' },
         { name: 'Ensoleillement moyen', value: Math.round(sun) + ' heures' },
       ];
@@ -399,7 +399,7 @@ function App() {
               {dataMapper()}
             </ul>
             <p className="text-3xl text-white text-center font-bold tracking-wide my-8 w-[900px]">
-              13 jours à venir
+              14 jours à venir
             </p>
             <ul className="w-[900px] list-none  flex justify-between text-xl text-center text-white font-bold tracking-wide my-4">
               {statsDisplayer()}
